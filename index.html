@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.css'>
+
+
+  <!-- google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&family=Noto+Serif+TC&display=swap" rel="stylesheet">
+
+
+  <style>@import url('./styles/style.css');</style>
+
+  <title>
+    youtube Page by component
+  </title>
+
+</head>
+<body>
+
+  <div id='app'>
+    <div class='wrapper'>
+  
+      <header_componemt></header_componemt>
+      <suggestion_component></suggestion_component>
+  
+      <main>
+        <div class="container-fluid">
+          <div class="row">
+            <videos_component  v-for='item in dataList' :item='item' @create_video='createHandler'></videos_component>
+          </div>
+        </div>
+      </main>
+
+      <footer_component></footer_component>
+    </div>
+  </div>
+
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.css'>
+
+</body>
+
+<script>
+
+// header component
+  Vue.component(('header_componemt'),{
+    template:`
+    <header class='header'>
+  
+    <div class="logo">
+      <img src="./assets/newyoutube.png" alt="">
+    </div>
+
+    <div class="search">
+      <input type="text" id='search'>
+      <label for="search"><i class="fas fa-search"></i></label>
+    </div>
+
+    <span>
+      <div class="member">
+        <div class="memberImg"></div>
+      </div>
+    </span>
+    
+  </header>
+
+    `,
+  })
+
+// suggestionArea component
+  Vue.component(('suggestion_component'),{
+
+    template:`
+    
+      <section class='suggestions'>
+        <div class="badge active">All</div>
+        <div class="badge">Music</div>
+        <div class="badge">One Piece</div>
+        <div class="badge">Anime</div>
+        <div class="badge">Love songs</div>
+        <div class="badge">Music</div>
+        <div class="badge">One Piece</div>
+        <div class="badge">Anime</div>
+        <div class="badge">Love songs</div>
+      </section>
+
+    `,
+  })
+
+// fotter component
+  Vue.component(('footer_component'),{
+  template:`
+      
+    <footer class='myfooter'>
+
+      <div class='icon'>
+        <i class="fas fa-home fa-2x"></i>
+      </div>
+      <div class='icon'>
+        <i class="fas fa-clock fa-2x"></i>
+      </div>
+
+      <div class='icon'>
+        <i class="fab fa-hotjar fa-2x"></i>
+      </div>
+      <div class='icon'>
+        <i class="fas fa-audio-description fa-2x"></i>
+    </div>
+
+  </footer>
+  `
+})
+
+// videos component
+  Vue.component(('videos_component'), {
+
+    props:['item'],
+
+    template:`
+          <div class="col-sm-6 col-md-4 col-lg-3">
+  
+            <div class="card">
+  
+              <img :src="item.img"  alt="videoPhoto">
+  
+              <div class="time">
+                <span>
+                  {{item.time}}
+                </span>
+              </div>
+  
+              <div class='content'>
+                <div class="userPhoto">
+                  <img :src="item.userImg" alt="">
+                </div>
+                <div class="title">
+                  <h5 @click='creatVideo(item)'>
+                    {{item.title}}
+                  </h5>
+                </div>
+              </div>
+  
+            </div>
+            
+          </div>
+        `,
+
+    methods:{
+      creatVideo(myvideo){
+        this.$emit('create_video', myvideo)
+      },
+    },
+  })
+
+
+  let vm =  new Vue({
+    el: '#app',
+
+    data: function(){
+      return { 
+        dataList:[
+        {
+            img: './assets/videoPhoto01.jpg',
+            title: "50首突破百萬的洗腦神曲你一定有聽過多想留在你身邊 53首首動聽 曲曲感人 聽到第二首眼淚不知不覺滑下了.........",
+            userImg:  ('./assets/user01.jpg'),
+            time: "39:55",
+          },
+          {
+            img:  './assets/videoPhoto02.jpg',
+            title: "合輯-【纯享版】萧敬腾摇滚版《你啊你啊》电吉他配西装简直太帅了 《歌手·当打之年》Singer2020【湖南卫视官方】",
+           userImg:  ('./assets/user02.jpg'),
+            time: "3:55"
+          },
+          {
+            img: './assets/videoPhoto03.jpg',
+            title: "2021年最火的英文歌曲 + 歐美流行音樂 + 超好聽中文+英文歌曲(精心挑選) 2021最近很火的英文歌 + KKBOX綜合排行榜",
+            userImg:  ('./assets/user03.jpg'),
+            time: "1:55:00"
+          },
+          {
+            img: './assets/videoPhoto04.jpg',
+            title: "丁芙妮 ---- 只是太愛你『因為我不知道下一輩子還是否能遇見你.............實在太扎心了，必聽。』【動態歌詞Lyrics】",
+            userImg:  ('./assets/user04.jpg'),
+            time: "04:55"
+          },
+          {
+            img: './assets/videoPhoto05.jpg',
+            title: "Murmuring大叔碎碎唸ep11- 如何快速增加自己的品飲功力；酒展教戰10守則； 前一天要睡飽、 慢慢來，慢飲也慢活！",
+            userImg:  ('./assets/user05.jpg'),
+            time: "11:55"
+          },
+        ],
+      }
+    },
+
+    methods:{
+      createHandler(value){
+        this.dataList.push(value)
+      }
+    },
+
+
+  })
+
+</script>
+</html>

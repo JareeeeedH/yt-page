@@ -1,0 +1,166 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+
+  font-family: 'Noto Sans TC', sans-serif, '微軟正黑體'
+}
+
+body{
+  background-color: white;
+}
+
+.header {
+
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  height: 10vh;
+
+  box-shadow: 0 5px 3px -3px rgb(59, 59, 59);
+
+  img {
+    width: 10vw;  
+    min-width: 100px;
+  }
+
+  .search{
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 80vw;
+
+    input{
+      width: 90%;
+      height: 100%;
+      border: none;
+    }
+    label{
+      width: 10%;
+      text-align: center;
+    }
+  }
+
+  .member{
+    display: flex;
+
+    width: 10vw;
+    align-items: center;
+    justify-content: center;
+
+    .memberImg{
+      // color: white;
+      // text-align: center;
+      background-color: #121212;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgb(255, 255, 255);
+      border-radius: 50%;
+      background-color: rgb(172, 140, 140);
+  }
+
+  }
+  
+
+}
+
+.suggestions{
+
+  overflow:auto;
+  position: sticky;
+  top: 10vh;
+  background-color: white;
+  z-index: 90;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  padding: 5px 10px;
+
+  .badge{
+    // flex: 1;
+    cursor: pointer;
+    margin: 5px 10px;
+    padding: 10px;
+    color: rgb(88, 88, 88);
+    font-size: 0.5rem;
+
+    width: auto;
+    height: 30px;
+    background: #e6e6e6;
+    border-radius: 100px / 75px;
+    }
+  .badge.active{
+    background: #808080;
+    color: white;
+  }
+}
+
+
+main{
+  min-height: 75vh;
+
+  .card {
+
+    position: relative;
+    padding: 0.2rem;
+
+    .time{
+      position: absolute;
+      bottom: 50%;
+      right: 5px;
+      padding: 1px;
+      background-color: rgba(150, 150, 150, 0.5);
+
+      span{
+        color: white;
+        font-weight: 500;
+      }
+    }
+    .content{
+      display:flex;
+      padding: 5px;
+
+      img{
+        border-radius: 100%;
+        width: 100%;
+        min-width: 35px;
+      }
+    }
+
+    h5 {
+      font-size: 1rem;
+      font-weight: 500;
+      cursor:pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  main .card .time{
+    position: absolute;
+      bottom: 30%;
+      right: 5px;
+      padding: 1px;
+      background-color: rgba(150, 150, 150, 0.5);
+  }
+}
+
+.myfooter{
+  display: flex;
+  padding: 2rem 0.5rem;
+  position: sticky;
+  bottom: 0;
+  height: 5vh;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+}
